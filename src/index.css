@@ -1,13 +1,77 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family:
+    source-code-pro,
+    Menlo,
+    Monaco,
+    Consolas,
+    'Courier New',
     monospace;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+nav > h1 {
+  margin: 0;
+}
+
+nav a {
+  text-decoration: none;
+  padding: 10px;
+  color: black;
+}
+
+form {
+  padding-inline: 20%;
+}
+
+.booksList {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 20%;
+}
+
+.bookState {
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete {
+  height: 3em;
+  border: none;
+  background-color: blanchedalmond;
+}
+
+input {
+  margin: 10px;
+  padding: 10px;
+}
+
+.addBtn {
+  padding: 10px;
+}
+
+h5 {
+  font-size: 24px;
 }
