@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import BookItem from './BookItem';
 import { addBook } from '../redux/books/booksSlice';
-/* eslint-disable react/jsx-props-no-spreading */
+
 const Books = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
@@ -23,7 +23,12 @@ const Books = () => {
       <div className="booksList">
         <h5>Book&apos;s List:</h5>
         {books.map((element) => (
-          <BookItem key={element.item_id} {...element} />
+          <BookItem
+            key={element.id}
+            id={element.id}
+            title={element.title}
+            author={element.author}
+          />
         ))}
       </div>
       <form action="submit">
