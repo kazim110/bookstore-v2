@@ -1,35 +1,44 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import BookItem from './BookItem';
+import AddBook from './AddBook';
+import { addBook } from '../redux/books/booksSlice';
+
 const Books = () => {
-  const bookList = [
-    {
-      id: 1,
-      title: 'The Loard',
-    },
-    {
-      id: 2,
-      title: 'Be Yourself!',
-    },
-    {
-      id: 3,
-      title: 'God and Human',
-    },
-  ];
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
+
+  const { books } = useSelector((state) => state.books);
+
+  const dispatch = useDispatch();
+  const addBookHandler = () => {
+    const newBook = {
+      id: uuidv4(),
+      title,
+      author,
+    };
+    dispatch(addBook(newBook));
+  };
 
   return (
     <>
       <div className="booksList">
         <h5>Book&apos;s List:</h5>
-        {bookList.map((element) => (
-          <div className="bookState" key={element.id}>
-            <h3>{element.title}</h3>
-            <button type="button" className="delete">Delete</button>
-          </div>
+        {books.map((element) => (
+          <BookItem
+            key={element.id}
+            id={element.id}
+            title={element.title}
+            author={element.author}
+          />
         ))}
       </div>
       <form action="submit">
         <h5>Add new Book:</h5>
-        <input type="text" placeholder="Book Title..." />
-        <input type="text" placeholder="Category" />
-        <button type="button" className="addBtn">Add Book</button>
+        <input type="text" placeholder="Book Title..." onChange={(e) => setTitle(e.target.value)} />
+        <input type="text" placeholder="Author" onChange={(e) => setAuthor(e.target.value)} />
+        <AddBook onClick={addBookHandler} />
       </form>
     </>
   );
