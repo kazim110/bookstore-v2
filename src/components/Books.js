@@ -1,17 +1,22 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import BookItem from './BookItem';
 import AddBook from './AddBook';
-import { addBook } from '../redux/books/booksSlice';
+import { addBook, getBooks } from '../redux/books/booksSlice';
 
 const Books = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
 
-  const { books } = useSelector((state) => state.books);
+  const booksList = useSelector((state) => state.books.books);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getBooks());
+  }, [dispatch]);
+
   const addBookHandler = () => {
     const newBook = {
       id: uuidv4(),
@@ -25,12 +30,10 @@ const Books = () => {
     <>
       <div className="booksList">
         <h5>Book&apos;s List:</h5>
-        {books.map((element) => (
+        {booksList.map((book) => (
           <BookItem
-            key={element.id}
-            id={element.id}
-            title={element.title}
-            author={element.author}
+            book={book}
+            key={book.id}
           />
         ))}
       </div>
