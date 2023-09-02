@@ -1,34 +1,37 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { deleteBook } from '../redux/books/booksSlice';
+import { getBooks, deleteBook } from '../redux/books/booksSlice';
 import DeleteBook from './DeleteBook';
 
-const BookItem = ({
-  id, title, author,
-}) => {
+const BookItem = ({ book }) => {
   const dispatch = useDispatch();
-  const handleDelete = () => {
-    dispatch(deleteBook(id));
+  const handleDelete = (id) => {
+    dispatch(deleteBook(id))
+      .then(() => dispatch(getBooks()));
   };
 
   return (
     <>
-      <div className="bookState" key={id}>
+      <div className="bookState" key={book.id}>
         <div>
-          <h3>{title}</h3>
-          <h4>{author}</h4>
+          <h3>{book.title}</h3>
+          <h4>{book.author}</h4>
+          <h4>{book.category}</h4>
         </div>
-        <DeleteBook id={id} onDelete={handleDelete} />
+        <DeleteBook id={book.id} onDelete={() => handleDelete(book.id)} />
       </div>
     </>
   );
 };
 
 BookItem.propTypes = {
-  id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
+  book: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default BookItem;

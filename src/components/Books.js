@@ -1,36 +1,42 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import { useEffect, useState } from 'react';
 import BookItem from './BookItem';
 import AddBook from './AddBook';
-import { addBook } from '../redux/books/booksSlice';
+import { addBook, getBooks } from '../redux/books/booksSlice';
 
 const Books = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
+  const [category, setCategory] = useState('');
 
-  const { books } = useSelector((state) => state.books);
+  const booksList = useSelector((state) => state.books.books);
 
   const dispatch = useDispatch();
-  const addBookHandler = () => {
-    const newBook = {
-      id: uuidv4(),
-      title,
-      author,
-    };
-    dispatch(addBook(newBook));
+
+  useEffect(() => {
+    dispatch(getBooks());
+  }, [dispatch]);
+
+  const addBookHandler = (title, author, category) => {
+    if (title && author && category) {
+      const newBook = {
+        title,
+        author,
+        category,
+      };
+      dispatch(addBook(newBook))
+        .then(() => dispatch(getBooks()));
+    }
   };
 
   return (
     <>
       <div className="booksList">
         <h5>Book&apos;s List:</h5>
-        {books.map((element) => (
+        {booksList.map((book) => (
           <BookItem
-            key={element.id}
-            id={element.id}
-            title={element.title}
-            author={element.author}
+            book={book}
+            key={book.id}
           />
         ))}
       </div>
@@ -38,7 +44,8 @@ const Books = () => {
         <h5>Add new Book:</h5>
         <input type="text" placeholder="Book Title..." onChange={(e) => setTitle(e.target.value)} />
         <input type="text" placeholder="Author" onChange={(e) => setAuthor(e.target.value)} />
-        <AddBook onClick={addBookHandler} />
+        <input type="text" placeholder="Category" onChange={(e) => setCategory(e.target.value)} />
+        <AddBook title={title} author={author} category={category} onClick={addBookHandler} />
       </form>
     </>
   );
