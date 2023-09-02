@@ -1,77 +1,24 @@
-body {
+*,
+*::after,
+*::before {
   margin: 0;
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    'Roboto',
-    'Oxygen',
-    'Ubuntu',
-    'Cantarell',
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-code {
-  font-family:
-    source-code-pro,
-    Menlo,
-    Monaco,
-    Consolas,
-    'Courier New',
-    monospace;
+html {
+  background-color: #f5f6fa;
 }
 
-nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-}
-
-nav > h1 {
-  margin: 0;
-}
-
-nav a {
-  text-decoration: none;
-  padding: 10px;
-  color: black;
-}
-
-form {
-  padding-inline: 20%;
-}
-
-.booksList {
+#root {
   display: flex;
   flex-direction: column;
-  padding-inline: 20%;
-}
-
-.bookState {
-  display: flex;
-  justify-content: space-between;
-}
-
-.delete {
-  height: 3em;
-  border: none;
-  background-color: blanchedalmond;
-}
-
-input {
-  margin: 10px;
-  padding: 10px;
-}
-
-.addBtn {
-  padding: 10px;
-}
-
-h5 {
-  font-size: 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
 }

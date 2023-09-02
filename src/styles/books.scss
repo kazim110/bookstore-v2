@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Slab:wght@300;700&display=swap');
+
+$bubble-gum-pink: #ff5ab7;
+$black: #1e1e1e;
+$pinkish-grey: #c7c7c7;
+$very-light-pink: #c4c4c4;
+$white: #fafafa;
+$white-two: #fff;
+$medium-blue: #307bbe;
+$pale-grey: #f5f6fa;
+$black-two: #121212;
+$azure: #0290ff;
+$white-three: #e8e8e8;
+
+@mixin inputs() {
+  padding: 1rem;
+  border-radius: 4px;
+  border: solid 1px $white-three;
+  background-color: $white-two;
+  font-size: 1rem;
+  letter-spacing: -0.15px;
+}
+
+#books-ctr {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  background-color: $white;
+  border-radius: 4px;
+  box-shadow: 0 0 60px 0 rgba(0, 0, 0, 0.05);
+
+  #form-ctr {
+    width: 100%;
+    padding: 0 2rem 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    h2 {
+      font-family: "Montserrat", sans-serif;
+      font-size: 1.25rem;
+      font-weight: bold;
+      letter-spacing: -0.18px;
+      color: #888;
+    }
+
+    form {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 4rem;
+
+      #title {
+        @include inputs();
+
+        flex: 3;
+        color: $very-light-pink;
+
+        &::placeholder {
+          color: $very-light-pink;
+        }
+      }
+
+      #author {
+        @include inputs();
+
+        flex: 1;
+
+        &::placeholder {
+          color: $very-light-pink;
+        }
+      }
+
+      #category {
+        @include inputs();
+
+        color: $very-light-pink;
+        flex: 1;
+      }
+
+      button {
+        border: transparent;
+        padding: 1rem;
+        border-radius: 3px;
+        background-color: $azure;
+        color: $white-two;
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+        flex: 1;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  #booklist {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    padding: 2rem;
+
+    .Lesson-Panel {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      border-radius: 4px;
+      border: solid 1px $white-three;
+      background-color: $white-two;
+      width: 100%;
+      padding: 1.5rem 8rem 1.5rem 1.5rem;
+      justify-content: space-between;
+
+      .book-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+
+        .School-of {
+          opacity: 0.5;
+          font-size: 0.875rem;
+          font-weight: bold;
+          color: $black-two;
+          font-family: "Montserrat", sans-serif;
+        }
+
+        .Title {
+          font-size: 1.375rem;
+          font-weight: bold;
+          letter-spacing: -0.2px;
+          color: $black-two;
+          font-family: "Roboto Slab", sans-serif;
+        }
+
+        .Author {
+          font-size: 0.875rem;
+          font-weight: 300;
+          color: #4386bf;
+          font-family: "Roboto Slab", sans-serif;
+        }
+
+        .book-opt {
+          display: flex;
+          align-items: center;
+          margin-top: 1rem;
+          gap: 1rem;
+
+          span {
+            font-family: "Roboto Slab", sans-serif;
+            font-size: 1rem;
+            font-weight: 300;
+            color: #4386bf;
+          }
+
+          .Line-2 {
+            width: 0.125rem;
+            height: 1.5rem;
+            border: solid 1px $white-three;
+          }
+
+          .delete {
+            font-family: "Roboto Slab", sans-serif;
+            font-size: 1rem;
+            font-weight: 300;
+            color: #4386bf;
+            background-color: transparent;
+            border: transparent;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      .progress-ctr {
+        display: flex;
+        gap: 4rem;
+        align-items: center;
+
+        .progress {
+          display: flex;
+          gap: 1rem;
+          align-items: center;
+
+          .progress-circle {
+            border-radius: 50%;
+            width: 4.25rem;
+            height: 4.25rem;
+            border: 5px solid #307bbe;
+            border-left-color: #e8e8e8;
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+          }
+
+          .percentage-ctr {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 0.3rem;
+
+            .percentage {
+              font-family: "Montserrat", sans-serif;
+              font-size: 2rem;
+              color: $black-two;
+            }
+
+            .completed {
+              opacity: 0.5;
+              font-family: "Montserrat", sans-serif;
+              font-size: 0.875rem;
+              color: $black-two;
+            }
+          }
+        }
+
+        .progress-line {
+          width: 0.125rem;
+          height: 4.375rem;
+          border: solid 1px $white-three;
+        }
+
+        .chapter-ctr {
+          display: flex;
+          flex-direction: column;
+          gap: 0.6rem;
+
+          .current-chapter {
+            opacity: 0.5;
+            font-family: "Roboto Slab", sans-serif;
+            font-size: 0.813rem;
+            font-weight: 300;
+            color: $black-two;
+          }
+
+          .chapter-name {
+            font-family: "Roboto Slab", sans-serif;
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: -0.4px;
+            color: $black-two;
+          }
+
+          button {
+            width: 11.5rem;
+            height: 2.063rem;
+            padding: 0.438rem 1.188rem 0.5rem 1.375rem;
+            border-radius: 3px;
+            background-color: $azure;
+            border: transparent;
+            color: $white-two;
+            margin-top: 1rem;
+            font-family: "Roboto Slab", sans-serif;
+            font-size: 0.813rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+          }
+        }
+      }
+    }
+  }
+
+  #line-1 {
+    border: solid 1px $white-three;
+    width: 80%;
+    height: 0.125rem;
+  }
+}
+
+@media only screen and (min-width: 750px) {
+  .Lesson-Panel {
+    flex-wrap: nowrap;
+    gap: 0;
+  }
+}
