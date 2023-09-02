@@ -26,8 +26,6 @@ const Books = () => {
       };
       dispatch(addBook(newBook))
         .then(() => dispatch(getBooks()));
-      setAuthor('');
-      setTitle('');
     }
   };
 
