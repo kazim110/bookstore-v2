@@ -1,14 +1,25 @@
 import { NavLink, Outlet } from 'react-router-dom';
+import '../styles/header.scss';
 
 const Navbar = () => (
   <>
-    <nav>
-      <h1>Book store</h1>
-      <div>
-        <NavLink to="/">Books</NavLink>
-        <NavLink to="/categories">Categories</NavLink>
+    <header>
+      <div id="header-ctr">
+        <h1 className="Bookstore-CMS">Bookstore CMS</h1>
+        <nav>
+          <div>
+            <ul>
+              <li><NavLink className="BOOKS" to="/">Books</NavLink></li>
+              <li><NavLink className="CATEGORIES" to="/categories">Categories</NavLink></li>
+            </ul>
+          </div>
+        </nav>
+        <div className="Oval">
+          <div className="Mask" />
+          <div id="body" />
+        </div>
       </div>
-    </nav>
+    </header>
     <Outlet />
   </>
 );

@@ -1,0 +1,124 @@
+$bubble-gum-pink: #ff5ab7;
+$black: #1e1e1e;
+$pinkish-grey: #c7c7c7;
+$very-light-pink: #c4c4c4;
+$white: #fafafa;
+$white-two: #fff;
+$medium-blue: #307bbe;
+$pale-grey: #f5f6fa;
+$black-two: #121212;
+$azure: #0290ff;
+$white-three: #e8e8e8;
+
+@mixin navlinks() {
+  font-family: Montserrat, sans-serif;
+  font-size: 0.6rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  color: $black-two;
+  text-decoration: none;
+  letter-spacing: 1.9px;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: $white-two;
+  padding: 1.5rem 1rem;
+  border-bottom: solid 1px $white-three;
+
+  #header-ctr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80vw;
+
+    .Bookstore-CMS {
+      font-family: Montserrat, sans-serif;
+      font-size: 1rem;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: $azure;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      ul {
+        display: flex;
+        list-style: none;
+        gap: 1rem;
+
+        .BOOKS {
+          @include navlinks();
+        }
+
+        .CATEGORIES {
+          opacity: 0.5;
+
+          @include navlinks();
+        }
+      }
+    }
+
+    .Oval {
+      width: 3rem;
+      height: 3rem;
+      padding: 0.875rem;
+      border: solid 1px $white-three;
+      margin: 0 2rem;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .Mask {
+        width: 0.65rem;
+        height: 0.65rem;
+        background-color: $azure;
+        border-radius: 50%;
+      }
+
+      #body {
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+        border-bottom-left-radius: 10%;
+        border-bottom-right-radius: 10%;
+        width: 1.1rem;
+        height: 0.7rem;
+        background-color: $azure;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 750px) {
+  .Bookstore-CMS {
+    font-size: 1.875rem !important;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+
+    .BOOKS {
+      font-size: 0.813rem !important;
+    }
+
+    .CATEGORIES {
+      font-size: 0.813rem !important;
+    }
+  }
+}
