@@ -1,13 +1,14 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { deleteBook } from '../redux/books/booksSlice';
+import { getBooks, deleteBook } from '../redux/books/booksSlice';
 import DeleteBook from './DeleteBook';
 
 const BookItem = ({ book }) => {
   const dispatch = useDispatch();
-  const handleDelete = () => {
-    dispatch(deleteBook(book.id));
+  const handleDelete = (id) => {
+    dispatch(deleteBook(id))
+      .then(() => dispatch(getBooks()));
   };
 
   return (
@@ -18,7 +19,7 @@ const BookItem = ({ book }) => {
           <h4>{book.author}</h4>
           <h4>{book.category}</h4>
         </div>
-        <DeleteBook id={book.id} onDelete={handleDelete} />
+        <DeleteBook id={book.id} onDelete={() => handleDelete(book.id)} />
       </div>
     </>
   );

@@ -45,16 +45,7 @@ const deleteBook = createAsyncThunk('books/deleteBook', async (id) => {
 export const booksSlice = createSlice({
   name: 'books',
   initialState,
-  reducers: {
-    // addBook: (state, action) => {
-    //   state.books.push(action.payload);
-    // },
-    // deleteBook: (state, action) => {
-    //   const itemId = action.payload;
-    //   state.books = state.books.filter((book) => book.id !== itemId);
-    // },
-
-  },
+  reducers: {},
   extraReducers(builder) {
     builder
       .addCase(getBooks.pending, (state) => {
